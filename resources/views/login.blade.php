@@ -29,13 +29,13 @@
                         <div class="nk-block nk-block-middle nk-auth-body">
                             <div class="brand-logo pb-5">
                                 <a href="/demo2/index.html" class="logo-link">
-                                    <h3>LMS</h3>
+                                    <h3>eduApp</h3>
                                 </a>
                             </div>
                             <div class="nk-block-head">
                                 <div class="nk-block-head-content">
                                     <h5 class="nk-block-title">Sign-In</h5>
-                                    <div class="nk-block-des"><p>Access the LMS panel using your email and passcode.</p></div>
+                                    <div class="nk-block-des"><p>Access the eduApp panel using your email and passcode.</p></div>
                                 </div>
                             </div>
                             @if(session('success'))
@@ -78,7 +78,7 @@
                                     <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Help</a></li>
                                 </ul>
                             </div>
-                            <div class="mt-3"><p>&copy; 2023 LMS. All Rights Reserved.</p></div>
+                            <div class="mt-3"><p>&copy; 2023 eduApp. All Rights Reserved.</p></div>
                         </div>
                     </div>
                     <div class="nk-split-content nk-split-stretch bg-abstract"></div>

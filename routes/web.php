@@ -27,4 +27,5 @@ Route::prefix('admin')->middleware(['auth:web'])->name('admin.')->group(function
     Route::view('/', 'admin.index')->name('index');
     Route::get('profile', [UserController::class, 'profile'])->name('profile');
     Route::resource('courses', CourseController::class);
+    Route::resource('enroll', \App\Http\Controllers\EnrollmentController::class);
 });

@@ -28,6 +28,7 @@
             <div class="nk-content">
                 @yield('content')
             </div>
+            @include('admin.components.alert-modal')
             @include('admin.layouts.footer')
         </div>
     </div>

@@ -6,7 +6,7 @@
             </div>
             <div class="nk-header-brand d-xl-none">
                 <a href="{{ route('admin.index') }}" class="logo-link">
-                    <h3>LMS</h3>
+                    <h3>eduApp</h3>
                 </a>
             </div>
             <div class="nk-header-search ms-3 ms-xl-0"><em class="icon ni ni-search"></em><input type="text" class="form-control border-transparent form-focus-none" placeholder="Search anything" /></div>
@@ -23,42 +23,28 @@
                                     <div class="nk-notification-item dropdown-inner">
                                         <div class="nk-notification-icon"><em class="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em></div>
                                         <div class="nk-notification-content">
-                                            <div class="nk-notification-text">You have requested to <span>Widthdrawl</span></div>
+                                            <div class="nk-notification-text">You have requested to <span>Enroll</span></div>
                                             <div class="nk-notification-time">2 hrs ago</div>
                                         </div>
                                     </div>
                                     <div class="nk-notification-item dropdown-inner">
                                         <div class="nk-notification-icon"><em class="icon icon-circle bg-success-dim ni ni-curve-down-left"></em></div>
                                         <div class="nk-notification-content">
-                                            <div class="nk-notification-text">Your <span>Deposit Order</span> is placed</div>
+                                            <div class="nk-notification-text">Your <span>Course</span> has ended</div>
                                             <div class="nk-notification-time">2 hrs ago</div>
                                         </div>
                                     </div>
                                     <div class="nk-notification-item dropdown-inner">
                                         <div class="nk-notification-icon"><em class="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em></div>
                                         <div class="nk-notification-content">
-                                            <div class="nk-notification-text">You have requested to <span>Widthdrawl</span></div>
+                                            <div class="nk-notification-text">You have requested to <span>Enroll</span></div>
                                             <div class="nk-notification-time">2 hrs ago</div>
                                         </div>
                                     </div>
                                     <div class="nk-notification-item dropdown-inner">
                                         <div class="nk-notification-icon"><em class="icon icon-circle bg-success-dim ni ni-curve-down-left"></em></div>
                                         <div class="nk-notification-content">
-                                            <div class="nk-notification-text">Your <span>Deposit Order</span> is placed</div>
-                                            <div class="nk-notification-time">2 hrs ago</div>
-                                        </div>
-                                    </div>
-                                    <div class="nk-notification-item dropdown-inner">
-                                        <div class="nk-notification-icon"><em class="icon icon-circle bg-warning-dim ni ni-curve-down-right"></em></div>
-                                        <div class="nk-notification-content">
-                                            <div class="nk-notification-text">You have requested to <span>Widthdrawl</span></div>
-                                            <div class="nk-notification-time">2 hrs ago</div>
-                                        </div>
-                                    </div>
-                                    <div class="nk-notification-item dropdown-inner">
-                                        <div class="nk-notification-icon"><em class="icon icon-circle bg-success-dim ni ni-curve-down-left"></em></div>
-                                        <div class="nk-notification-content">
-                                            <div class="nk-notification-text">Your <span>Deposit Order</span> is placed</div>
+                                            <div class="nk-notification-text">Your <span>Assigment</span> is due</div>
                                             <div class="nk-notification-time">2 hrs ago</div>
                                         </div>
                                     </div>

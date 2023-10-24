@@ -34,9 +34,11 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        @if(Auth::user()->hasAnyRole(['instructor']))
                                         <li class="nk-block-tools-opt d-none d-sm-block" data-bs-toggle="modal" data-bs-target="#modalCreate">
                                             <a href="#" class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add Course</span></a>
                                         </li>
+                                        @endif
                                         <li class="nk-block-tools-opt d-block d-sm-none" data-bs-toggle="modal" data-bs-target="#modalCreate">
                                             <a href="#" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
                                         </li>
@@ -113,12 +115,23 @@
                                                             <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <ul class="link-list-opt no-bdr">
+                                                                    @if(Auth::user()->hasAnyRole(['instructor']))
                                                                     <li>
-                                                                        <a data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a>
+                                                                        <a onclick="editCourse('{{ $course }}')" data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>Edit Course</span></a>
                                                                     </li>
                                                                     <li>
                                                                         <a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a>
                                                                     </li>
+                                                                    @endif
+                                                                    @if(Auth::user()->hasAnyRole(['student']))
+                                                                            <li>
+                                                                                <a onclick="editCourse('{{ $course }}')" data-bs-toggle="modal" href="#modalEdit"><em class="icon ni ni-edit"></em><span>View Course</span></a>
+                                                                            </li>
+                                                                    <li>
+                                                                        <a style="cursor: pointer" onclick="enrollCourse('{{ $course->id }}')"><em class="icon ni ni-edit"></em><span>Enroll in Course</span></a>
+                                                                    </li>
+                                                                    @endif
+
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -228,8 +241,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="course-price">Credit Hours</label>
-                                    <div class="form-control-wrap"><input type="number" class="form-control" name="credit_hours" placeholder="4" /></div>
+                                    <label class="form-label" for="course-credits">Credit Hours</label>
+                                    <div class="form-control-wrap"><input type="number" class="form-control" name="credit_hours" id="course-credits" placeholder="4" /></div>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -291,7 +304,7 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="edit-description">Course Description</label>
-                                    <div class="form-control-wrap"><div class="quill-minimal"></div></div>
+                                    <div class="form-control-wrap"><textarea id="edit-description" name="description" cols="50"></textarea></div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -320,13 +333,13 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="form-label" for="course-price-edit">Course Price</label>
-                                    <div class="form-control-wrap"><input type="number" class="form-control" id="course-price-edit" value="30" /></div>
+                                    <label class="form-label" for="course-price-edit">Credit Hours</label>
+                                    <div class="form-control-wrap"><input type="number" class="form-control" id="edit-course-price" /></div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label class="form-label">Deadline</label>
+                                    <label class="form-label">Ending Date</label>
                                     <div class="form-control-wrap">
                                         <div class="form-icon form-icon-left"><em class="icon ni ni-calendar-alt"></em></div>
                                         <input type="text" class="form-control date-picker" placeholder="mm/dd/yyyy" />
@@ -363,4 +376,35 @@
     <link rel="stylesheet" href="{{ asset('assets/css/editors/quill.css') }}" />
     <script src="{{ asset('assets/js/libs/editors/quill.js') }}"></script>
     <script src="{{ asset('assets/js/editors.js') }}"></script>
+
+    <script>
+        function editCourse(course){
+            console.log(course['name']);
+            $('#edit-course-name').val(course.name);
+            $('#edit-dificulties').val(course.difficulty);
+            $('#edit-lesson').val(course.lessons);
+            $('#edit-customFile').val(course.thumbnail);
+            $('#edit-description').val(course.description);
+            $('#edit-course-active').val(course.status);
+            $('#course-credits').val(course.credit_hours);
+        }
+        function enrollCourse(course_id){
+            var formData = new FormData();
+            formData.append('course', course_id);
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('admin.enroll.store')}}',
+                contentType: false,
+                processData: false,
+                data: formData,
+                headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
+                success: function () {
+                    $('#modalAlert').modal('show');
+                },
+                error: function (xhr,status,error){
+                    // $('#modalAlert').toggle();
+                }
+            });
+        }
+    </script>
 @endsection
