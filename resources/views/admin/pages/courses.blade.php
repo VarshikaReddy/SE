@@ -121,6 +121,11 @@
                                                                     </li>
                                                                     <li>
                                                                         <a data-bs-toggle="modal" href="#modalDelete"><em class="icon ni ni-delete"></em><span>Delete Course</span></a>
+                                                                        <form id="delete_form" action="{{ route('admin.courses.destroy', $course) }}" method="post">
+                                                                            @csrf
+                                                                            @method('delete')
+                                                                            <button type="submit" class="dropdown-item"><em class="icon ni ni-delete"></em><span>Delete Course</span></button>
+                                                                        </form>
                                                                     </li>
                                                                     @endif
                                                                     @if(Auth::user()->hasAnyRole(['student']))
@@ -378,6 +383,10 @@
     <script src="{{ asset('assets/js/editors.js') }}"></script>
 
     <script>
+        $('#deleteEvent').click(function (){
+            $('#delete_form').submit()
+        });
+
         function editCourse(course){
             console.log(course['name']);
             $('#edit-course-name').val(course.name);

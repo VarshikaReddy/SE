@@ -10,7 +10,12 @@
                                 <div class="nk-block-head">
                                     <div class="nk-block-between d-flex justify-content-between">
                                         <div class="nk-block-head-content">
-                                            <h4 class="nk-block-title">Personal Information</h4>
+                                            <div class="d-flex justify-content-between">
+                                                <h4 class="nk-block-title">Personal Information</h4>
+                                                @if(session('success'))
+                                                    <div class="text-success mb-2">{{ session('success') }}</div>
+                                                @endif
+                                            </div>
                                             <div class="nk-block-des"><p>Basic info, like your name and address, that you use on Nio Platform.</p></div>
                                         </div>
                                         <div class="d-flex align-center">
@@ -101,16 +106,16 @@
                                     <div class="card-inner p-0">
                                         <ul class="link-list-menu">
                                             <li>
-                                                <a class="active" href="/demo2/lms/admin-profile.html"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a>
+                                                <a class="active" href="#"><em class="icon ni ni-user-fill-c"></em><span>Personal Infomation</span></a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="card-inner">
                                         <div class="user-account-info py-0">
                                             <h6 class="overline-title-alt">Last Login</h6>
-                                            <p>06-29-2020 02:39pm</p>
+                                            <p>{{ \Illuminate\Support\Carbon::now()->format('d-M-y h:i A') }}</p>
                                             <h6 class="overline-title-alt">Login IP</h6>
-                                            <p>192.129.243.28</p>
+                                            <p>{{  request()->ip() }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -131,77 +136,58 @@
                         <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#personal">Personal</a></li>
                         <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#address">Address</a></li>
                     </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="personal">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="full-name">Full Name</label><input type="text" class="form-control" id="full-name" value="Abu Bin Ishtiyak" placeholder="Enter Full name" />
+                    <form id="update-user" action="{{ route('admin.user.update', Auth::user()) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <div class="tab-content">
+
+                                <div class="tab-pane active" id="personal">
+                                    <div class="row gy-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="full-name">First Name</label><input type="text" name="first_name" class="form-control" value="{{ Auth::user()->first_name }}" placeholder="Enter First name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="display-name">Last Name</label><input type="text" name="last_name" class="form-control" value="{{ Auth::user()->last_name }}" placeholder="Enter Last name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="form-label" for="personal-email">Email</label><input type="email" name="email" class="form-control" id="personal-email" value="{{ Auth::user()->email }}" /></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="form-label" for="phone-no">Phone Number</label><input type="text" name="phone" class="form-control" id="phone-no" value="{{ Auth::user()->phone }}" placeholder="Phone Number" /></div>
+                                        </div>
+                                        <div class="col-12">
+                                            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                                <li><button type="submit" data-bs-dismiss="modal" class="btn btn-primary">Update Profile</button></li>
+                                                <li><a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="display-name">Display Name</label><input type="text" class="form-control" id="display-name" value="Ishtiyak" placeholder="Enter display name" />
+                                <div class="tab-pane" id="address">
+                                    <div class="row gy-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="form-label" for="address-l1">Address Line 1</label><input type="text" class="form-control" id="address-l1" value="{{ Auth::user()->email }}" /></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="form-label" for="address-l2">Address Line 2</label><input type="text" class="form-control" id="address-l2" value="" /></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="form-label" for="address-st">State</label><input type="text" class="form-control" id="address-st" value="Kentucky" /></div>
+                                        </div>
+                                        <div class="col-12">
+                                            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                                <li><a href="#" data-bs-dismiss="modal" class="btn btn-primary">Update Address</a></li>
+                                                <li><a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="form-label" for="personal-email">Email</label><input type="email" class="form-control" id="personal-email" value="info@softnio.com" /></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="form-label" for="phone-no">Phone Number</label><input type="text" class="form-control" id="phone-no" value="+880" placeholder="Phone Number" /></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="form-label" for="birth-day">Date of Birth</label><input type="text" class="form-control date-picker" id="birth-day" placeholder="02/24/2021" /></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="form-label" for="nationality">Nationality</label><input type="text" class="form-control date-picker" id="nationality" value="Canadian" /></div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input" id="latest-sale" /><label class="custom-control-label" for="latest-sale">Use full name to display </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li><a href="#" data-bs-dismiss="modal" class="btn btn-primary">Update Profile</a></li>
-                                        <li><a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a></li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
-                        <div class="tab-pane" id="address">
-                            <div class="row gy-4">
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="form-label" for="address-l1">Address Line 1</label><input type="text" class="form-control" id="address-l1" value="2337 Kildeer Drive" /></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="form-label" for="address-l2">Address Line 2</label><input type="text" class="form-control" id="address-l2" value="" /></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><label class="form-label" for="address-st">State</label><input type="text" class="form-control" id="address-st" value="Kentucky" /></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-label" for="address-county">Country</label>
-                                        <select class="form-select js-select2" id="address-county">
-                                            <option>Canada</option>
-                                            <option>United State</option>
-                                            <option>United Kindom</option>
-                                            <option>Australia</option>
-                                            <option>India</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                        <li><a href="#" data-bs-dismiss="modal" class="btn btn-primary">Update Address</a></li>
-                                        <li><a href="#" data-bs-dismiss="modal" class="link link-light">Cancel</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

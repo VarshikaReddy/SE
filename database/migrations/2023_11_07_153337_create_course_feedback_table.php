@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assignments', function (Blueprint $table) {
+        Schema::create('course_feedback', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
             $table->longText('description')->nullable();
-            $table->text('thumbnail')->nullable();
-            $table->integer('total_marks')->default('0');
-            $table->integer('passing_marks')->default('0');
-            $table->date('submission_date');
             $table->foreignId('course_id')->nullable()->references('id')->on('courses')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assignments');
+        Schema::dropIfExists('course_feedback');
     }
 };

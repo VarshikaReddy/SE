@@ -26,6 +26,13 @@ Route::view('/signup', 'signup')->name('signup');
 Route::prefix('admin')->middleware(['auth:web'])->name('admin.')->group(function () {
     Route::view('/', 'admin.index')->name('index');
     Route::get('profile', [UserController::class, 'profile'])->name('profile');
+    Route::put('user/{user}', [UserController::class, 'update'])->name('user.update');
     Route::resource('courses', CourseController::class);
     Route::resource('enroll', \App\Http\Controllers\EnrollmentController::class);
+    Route::resource('feedback', \App\Http\Controllers\CourseFeedbackController::class);
+    Route::resource('assignments', \App\Http\Controllers\AssignmentController::class);
+    Route::resource('student-assignments', \App\Http\Controllers\StudentAssignmentController::class);
+    Route::get('grades', [\App\Http\Controllers\StudentAssignmentController::class, 'create'])->name('grades');
+    Route::get('progress', [CourseController::class, 'progress'])->name('progress');
+    Route::post('submit-assignment', [\App\Http\Controllers\AssignmentController::class, 'submit'])->name('assignments.submit');
 });

@@ -15,44 +15,49 @@
             <div class="nk-sidebar-menu" data-simplebar>
                 <ul class="nk-menu">
                     <li class="nk-menu-item">
-                        <a href="{{ route('admin.index') }}" class="nk-menu-link">
+                        <a href="{{ route('admin.index') }}" class="nk-menu-link {{ request()->routeIs('admin.index.*') ? 'active' : '' }}">
                             <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span><span class="nk-menu-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="nk-menu-item">
                         <a href="{{ route('admin.courses.index') }}" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span><span class="nk-menu-text">Courses</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="/demo2/lms/students.html" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span><span class="nk-menu-text">Students</span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-book-fill"></em></span><span class="nk-menu-text">Available Courses</span>
                         </a>
                     </li>
                     <li class="nk-menu-item has-sub">
                         <a href="#" class="nk-menu-link nk-menu-toggle">
-                            <span class="nk-menu-icon"><em class="icon ni ni-property-add"></em></span><span class="nk-menu-text">Enrolment</span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-property-add"></em></span><span class="nk-menu-text">Assignments</span>
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="/demo2/lms/enroll-history.html" class="nk-menu-link"><span class="nk-menu-text">Enroll History</span></a>
+                                <a href="{{ route('admin.assignments.index') }}" class="nk-menu-link"><span class="nk-menu-text">View Assignment</span></a>
                             </li>
+                            @if(Auth::user()->hasAnyRole(['instructor']))
                             <li class="nk-menu-item">
-                                <a href="/demo2/lms/enroll-student.html" class="nk-menu-link"><span class="nk-menu-text">Enroll a Student</span></a>
+                                <a href="{{ route('admin.student-assignments.index') }}" class="nk-menu-link"><span class="nk-menu-text">Review Assignment</span></a>
                             </li>
+                            @endif
                         </ul>
                     </li>
 
                     <li class="nk-menu-item">
-                        <a href="/demo2/lms/admin-profile.html" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span><span class="nk-menu-text">Admin profile</span>
+                        <a href="{{ route('admin.progress') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span><span class="nk-menu-text">Progress Tracking</span>
                         </a>
                     </li>
-                    <li class="nk-menu-item">
-                        <a href="/demo2/lms/settings.html" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-setting-alt-fill"></em></span><span class="nk-menu-text">Settings</span>
-                        </a>
-                    </li>
+                    @if(Auth::user()->hasAnyRole(['student']))
+                        <li class="nk-menu-item">
+                            <a href="{{ route('admin.grades') }}" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-account-setting-fill"></em></span><span class="nk-menu-text">View Grades</span>
+                            </a>
+                        </li>
+                        <li class="nk-menu-item">
+                            <a href="{{ route('admin.feedback.create') }}" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-setting-alt-fill"></em></span><span class="nk-menu-text">Feedback</span>
+                            </a>
+                        </li>
+                    @endif
+
                 </ul>
             </div>
         </div>

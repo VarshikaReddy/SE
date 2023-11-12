@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Services\DB\CourseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('created_at', 'desc')->paginate(10);
-        return view('admin.pages.courses')->with(['courses' => $courses]);
+        $courses = CourseService::build()->getUserCourses(auth()->user());
+        return view('admin.pages.courses._all')->with(['courses' => $courses]);
     }
 
     /**
@@ -25,7 +26,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.courses.single');
     }
 
     /**
@@ -44,8 +45,8 @@ class CourseController extends Controller
             $course = Course::create($request->except(['_token', 'ending_date'])+['thumbnail' => $imageName, 'ending_date' => $ending_date, 'instructor' => Auth::user()->id]);
         });
 
-        $courses = Course::orderBy('created_at', 'desc')->paginate(10);
-        return redirect()->back()->with(['courses' => $courses]);
+        return redirect()->route('admin.courses.index');
+
     }
 
     public function upload(Request $request)
@@ -76,7 +77,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return view('admin.pages.courses.view')->with(['course' => $course]);
     }
 
     /**
@@ -84,7 +85,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        //
+        return view('admin.pages.courses.single')->with(['course' => $course]);
     }
 
     /**
@@ -92,7 +93,18 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        //
+        DB::transaction(function () use ($request, $course) {
+
+            $imageName = null;
+            if ($request->has('thumbnail')) {
+                $imageName= $request->thumbnail->getClientOriginalName();
+                $request->thumbnail->move(public_path().'/images/', $imageName);
+            }
+            $ending_date = Carbon::parse($request->ending_date)->toDateTimeString();
+            $course->update($request->except(['_token', 'ending_date'])+['thumbnail' => $imageName, 'ending_date' => $ending_date, 'instructor' => Auth::user()->id]);
+        });
+
+        return redirect()->route('admin.courses.index');
     }
 
     /**
@@ -100,6 +112,12 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect()->route('admin.courses.index');
+    }
+
+    public function progress(){
+        $courses = CourseService::build()->getEnrolledCourses(auth()->user());
+        return view('admin.pages.progress')->with(['courses' => $courses]);
     }
 }
