@@ -98,13 +98,6 @@
                             </div>
                         </div>
                         <div class="nk-block nk-auth-footer">
-                            <div class="nk-block-between">
-                                <ul class="nav nav-sm">
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Terms & Condition</a></li>
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Privacy Policy</a></li>
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Help</a></li>
-                                </ul>
-                            </div>
                             <div class="mt-3"><p>&copy; 2023 eduApp. All Rights Reserved.</p></div>
                         </div>
                     </div>

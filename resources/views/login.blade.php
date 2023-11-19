@@ -49,12 +49,12 @@
                             <form action="{{ route('login') }}" method="post" role="form">
                                 @csrf
                                 <div class="form-group">
-                                    <div class="form-label-group"><label class="form-label" for="default-01">Email</label><a class="link link-primary link-sm" tabindex="-1" href="#">Need Help?</a></div>
+                                    <div class="form-label-group"><label class="form-label" for="default-01">Email</label></div>
                                     <div class="form-control-wrap"><input type="text" class="form-control form-control-lg" name="email" placeholder="Enter your email address or username" /></div>
                                 </div>
                                 <div class="form-group">
                                     <div class="form-label-group">
-                                        <label class="form-label" for="password">Passcode</label><a class="link link-primary link-sm" tabindex="-1" href="/demo2/pages/auths/auth-reset-v3.html">Forgot Code?</a>
+                                        <label class="form-label" for="password">Passcode</label>
                                     </div>
                                     <div class="form-control-wrap">
                                         <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch lg" data-target="password">
@@ -67,17 +67,10 @@
                             </form>
                             <div class="form-note-s2 pt-4">New on our platform? <a href="{{ route('signup') }}">Create an account</a></div>
                             <div class="text-center mt-5">
-                                <span class="fw-500">I don't have an account? <a href="#">Try it now</a></span>
+                                <span class="fw-500">I don't have an account? <a href="{{ route('signup') }}">Try it now</a></span>
                             </div>
                         </div>
                         <div class="nk-block nk-auth-footer">
-                            <div class="nk-block-between">
-                                <ul class="nav nav-sm">
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Terms & Condition</a></li>
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Privacy Policy</a></li>
-                                    <li class="nav-item"><a class="link link-primary fw-normal py-2 px-3 fs-13px" href="#">Help</a></li>
-                                </ul>
-                            </div>
                             <div class="mt-3"><p>&copy; 2023 eduApp. All Rights Reserved.</p></div>
                         </div>
                     </div>

@@ -75,12 +75,6 @@
                                     <li>
                                         <a href="{{ route('admin.profile') }}"><em class="icon ni ni-user-alt"></em><span>View Profile</span></a>
                                     </li>
-                                    <li>
-                                        <a href="/demo2/lms/admin-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="/demo2/lms/admin-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>Login Activity</span></a>
-                                    </li>
                                 </ul>
                             </div>
                             <div class="dropdown-inner">

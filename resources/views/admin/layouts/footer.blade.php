@@ -5,7 +5,6 @@
             <div class="nk-footer-links">
                 <ul class="nav nav-sm">
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><em class="icon ni ni-globe"></em><span class="ms-1">About</span></a>
                     </li>
                 </ul>
             </div>
