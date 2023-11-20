@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::view('/', 'login')->name('home');
 Route::post('register', [CustomAuthController::class, 'register'])->name('register');
 Route::post('login', [CustomAuthController::class, 'login'])->name('login');

@@ -1,8 +1,9 @@
 <div class="nk-sidebar nk-sidebar-fixed" data-content="sidebarMenu">
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
-            <a href="{{ route('admin.index') }}" class="logo-link nk-sidebar-logo">
-                <h3>eduApp</h3>
+            <a href="{{ route('admin.index') }}" class="logo-link nk-sidebar-logo d-flex">
+                <span class="nk-menu-icon"><em class="icon ni ni-scan-fill"></em></span>
+                <h4>EDUAPP</h4>
             </a>
         </div>
         <div class="nk-menu-trigger me-n2">

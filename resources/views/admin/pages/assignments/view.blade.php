@@ -35,6 +35,9 @@
                                     <div class="col-6">
                                         Deadline: {{ $assignment->total_marks }}
                                     </div>
+                                    <div class="col-6">
+                                        Obtained Marks: {{ isset($assignment->student_assignment) && $assignment->student_assignment->grade > 0 ? $assignment->student_assignment->grade : 'Not Marked' }}
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="row">
@@ -44,23 +47,27 @@
                                     </div>
                                 </div>
                                 <br>
-                                <form action="{{ route('admin.assignments.submit') }}" method="post" enctype="multipart/form-data" role="form" class="pt-2">
-                                    @csrf
-                                    <input type="hidden" name="assignment_id" value="{{ $assignment->id }}">
-                                    <div class="row gy-3 gx-gs mb-2">
-                                        <div class="col-3">
-                                            <label class="form-label" for="thumb">Submit Your Assignment Here</label>
-                                            <div class="form-control-wrap">
-                                                <div class="form-file"><input type="file" class="form-file-input" name="assignment_file" value="{{ isset($assignment) ? $assignment->thumbnail : '' }}" required/><label class="form-file-label" for="customFile-create">Choose file</label></div>
+                                @if($assignment->student_assignment)
+                                    <b class="text-success">Submitted Sucessfully</b><br>
+                                @else
+                                    <form action="{{ route('admin.assignments.submit') }}" method="post" enctype="multipart/form-data" role="form" class="pt-2">
+                                        @csrf
+                                        <input type="hidden" name="assignment_id" value="{{ $assignment->id }}">
+                                        <div class="row gy-3 gx-gs mb-2">
+                                            <div class="col-3">
+                                                <label class="form-label" for="thumb">Submit Your Assignment Here</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="form-file"><input type="file" class="form-file-input" name="assignment_file" value="{{ isset($assignment) ? $assignment->thumbnail : '' }}" required/><label class="form-file-label" for="customFile-create">Choose file</label></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
                                         <div class="col-12">
                                             <div class="form-group"><button type="submit" class="btn btn-primary">Submit Assignment</button></div>
                                         </div>
-                                    </div>
-                                </form>
+                            </div>
+                            </form>
+                                @endif
                             </div>
                         </div>
                     </div>

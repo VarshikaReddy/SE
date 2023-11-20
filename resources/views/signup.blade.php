@@ -29,13 +29,13 @@
                         <div class="nk-block nk-block-middle nk-auth-body">
                             <div class="brand-logo pb-5">
                                 <a href="{{ route('home') }}" class="logo-link">
-                                    <h3>eduApp</h3>
+                                    <h3>EDUAPP</h3>
                                 </a>
                             </div>
                             <div class="nk-block-head">
                                 <div class="nk-block-head-content">
                                     <h5 class="nk-block-title">Register</h5>
-                                    <div class="nk-block-des"><p>Create New eduApp Account</p></div>
+                                    <div class="nk-block-des"><p>Create New EDUAPP Account</p></div>
                                 </div>
                             </div>
                             @if($errors->any())
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="phone-no">Phone Number</label>
-                                    <input type="text" class="form-control" name="phone" value="+880" placeholder="Phone Number" />
+                                    <input type="text" class="form-control" name="phone" value="+1" placeholder="Phone Number" />
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="password">Passcode</label>
@@ -88,7 +88,7 @@
                                 <div class="form-group">
                                     <div class="custom-control custom-control-xs custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="checkbox" />
-                                        <label class="custom-control-label" for="checkbox">I agree to eduApp <a tabindex="-1" href="#">Privacy Policy</a> &amp; <a tabindex="-1" href="#"> Terms.</a></label>
+                                        <label class="custom-control-label" for="checkbox">I agree to EDUAPP <a tabindex="-1" href="#">Privacy Policy</a> &amp; <a tabindex="-1" href="#"> Terms.</a></label>
                                     </div>
                                 </div>
                                 <div class="form-group"><button class="btn btn-lg btn-primary btn-block" type="submit">Register</button></div>
@@ -98,10 +98,12 @@
                             </div>
                         </div>
                         <div class="nk-block nk-auth-footer">
-                            <div class="mt-3"><p>&copy; 2023 eduApp. All Rights Reserved.</p></div>
+                            <div class="mt-3"><p>&copy; 2023 EDUAPP. All Rights Reserved.</p></div>
                         </div>
                     </div>
-                    <div class="nk-split-content nk-split-stretch bg-abstract"></div>
+                    <div class="nk-split-content nk-split-stretch">
+                        <img src="{{ asset('images/avatar/6736639.jpg') }}" alt="" width="80%">
+                    </div>
                 </div>
             </div>
         </div>

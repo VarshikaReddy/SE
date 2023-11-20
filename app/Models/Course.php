@@ -24,7 +24,7 @@ class Course extends Model
         'instructor',
     ];
 
-    protected $appends = ['prefix_name'];
+    protected $appends = ['prefix_name', 'enrolled'];
     /**
      * @return BelongsTo
      */
@@ -64,5 +64,11 @@ class Course extends Model
             return  substr($this->name[0], 0, 1).''.substr($this->name[1], 0, 1);
         }
         return  substr($this->name[0], 0, 1);
+    }
+
+    public function getEnrolledAttribute(): bool
+    {
+       $en =  $this->enrollments->where('user_id', auth()->user()->id)->first();
+       return isset($en);
     }
 }

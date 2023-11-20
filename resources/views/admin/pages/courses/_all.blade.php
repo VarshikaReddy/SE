@@ -108,6 +108,7 @@
                                             <td class="nk-tb-col tb-col-md"><span class="badge badge-dim bg-success">{{ $course->status }}</span></td>
                                             <td class="nk-tb-col tb-col-mb"><span>{{ $course->credit_hours }}</span></td>
                                             <td class="nk-tb-col tb-col-mb"><span>{{ \Illuminate\Support\Carbon::parse($course->ending_date)->format('d.m.yy') }}</span></td>
+                                            <td class="nk-tb-col tb-col-mb"><span class="text-{{ $course->enrolled ? 'success' : 'info' }}">{{ $course->enrolled ? 'Enrolled' : 'Not Yet' }}</span></td>
                                             <td class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
                                                     <li>

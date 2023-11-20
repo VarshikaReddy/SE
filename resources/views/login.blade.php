@@ -28,14 +28,14 @@
                     <div class="nk-split-content nk-block-area nk-block-area-column nk-auth-container bg-white">
                         <div class="nk-block nk-block-middle nk-auth-body">
                             <div class="brand-logo pb-5">
-                                <a href="/demo2/index.html" class="logo-link">
-                                    <h3>eduApp</h3>
+                                <a href="#" class="logo-link">
+                                    <h3>EDUAPP</h3>
                                 </a>
                             </div>
                             <div class="nk-block-head">
                                 <div class="nk-block-head-content">
                                     <h5 class="nk-block-title">Sign-In</h5>
-                                    <div class="nk-block-des"><p>Access the eduApp panel using your email and passcode.</p></div>
+                                    <div class="nk-block-des"><p>Access the EDUAPP panel using your email and passcode.</p></div>
                                 </div>
                             </div>
                             @if(session('success'))
@@ -71,10 +71,12 @@
                             </div>
                         </div>
                         <div class="nk-block nk-auth-footer">
-                            <div class="mt-3"><p>&copy; 2023 eduApp. All Rights Reserved.</p></div>
+                            <div class="mt-3"><p>&copy; 2023 EDUAPP. All Rights Reserved.</p></div>
                         </div>
                     </div>
-                    <div class="nk-split-content nk-split-stretch bg-abstract"></div>
+                    <div class="nk-split-content nk-split-stretch">
+                        <img src="{{ asset('images/avatar/4336308.jpg') }}" alt="" width="80%">
+                    </div>
                 </div>
             </div>
         </div>

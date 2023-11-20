@@ -65,6 +65,7 @@
                                         <th class="nk-tb-col tb-col-lg"><span class="sub-text">Submission Date</span></th>
                                         <th class="nk-tb-col tb-col-xxl"><span class="sub-text">Total Marks</span></th>
                                         <th class="nk-tb-col tb-col-md"><span class="sub-text">Passing Marks</span></th>
+                                        <th class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></th>
                                         <th class="nk-tb-col nk-tb-col-tools text-end">
                                             <ul class="nk-tb-actions gx-1">
                                                 <li>
@@ -103,6 +104,7 @@
                                             <td class="nk-tb-col tb-col-lg"><span> {{ $assignment->submission_date }}</span></td>
                                             <td class="nk-tb-col tb-col-xxl"><span> {{ $assignment->total_marks }}</span></td>
                                             <td class="nk-tb-col tb-col-md"><span class="badge badge-dim bg-success">{{ $assignment->passing_marks }}</span></td>
+                                            <td class="nk-tb-col tb-col-md"><span class="badge badge-dim  bg-{{ isset($assignment->student_assignment) ? 'success' : 'danger' }} ">{{ isset($assignment->student_assignment) ? 'Submitted' : 'Submission Pending' }}</span></td>
                                             <td class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
                                                     <li>

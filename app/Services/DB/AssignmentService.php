@@ -28,7 +28,7 @@ class AssignmentService
 
     public function getCoursesAssignments(){
         $courses = CourseService::build()->getEnrolledCourses(auth()->user())->pluck('id');
-        return $this->query()->whereIn('id', $courses)->paginate(10);
+        return $this->query()->whereIn('course_id', $courses)->paginate(10);
     }
 
 }

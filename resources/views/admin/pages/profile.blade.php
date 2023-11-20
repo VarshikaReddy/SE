@@ -62,11 +62,11 @@
                                         <div class="data-head"><h6 class="overline-title">Preferences</h6></div>
                                         <div class="data-item">
                                             <div class="data-col"><span class="data-label">Language</span><span class="data-value">English (United State)</span></div>
-                                            <div class="data-col data-col-end"><a data-bs-toggle="modal" href="#modalLanguage" class="link link-primary">Change Language</a></div>
+                                            <div class="data-col data-col-end"></div>
                                         </div>
                                         <div class="data-item">
                                             <div class="data-col"><span class="data-label">Date Format</span><span class="data-value">M, D, YYYY</span></div>
-                                            <div class="data-col data-col-end"><a data-bs-toggle="modal" href="#modalDate" class="link link-primary">Change</a></div>
+                                            <div class="data-col data-col-end"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -188,49 +188,6 @@
                                 </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="modalLanguage">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
-                <div class="modal-body">
-                    <h5 class="title mb-4">Choose language</h5>
-                    <div class="form-group">
-                        <select class="form-select js-select2 form-control form-control-lg" data-search="on">
-                            <option value="default_option">English (United State)</option>
-                            <option value="option_select_name">Bangla</option>
-                            <option value="option_select_name">English (United State)</option>
-                            <option value="option_select_name">English (United Kingdom)</option>
-                            <option value="option_select_name">Japanese</option>
-                            <option value="option_select_name">Spanish</option>
-                            <option value="option_select_name">Swedish</option>
-                            <option value="option_select_name">German</option>
-                            <option value="option_select_name">Chinese (Simplified)</option>
-                        </select>
-                    </div>
-                    <div class="form-group"><button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Save</button></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="modalDate">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross"></em></a>
-                <div class="modal-body">
-                    <h5 class="title mb-4">Date Formate</h5>
-                    <div class="form-group">
-                        <select class="form-select js-select2 form-control form-control-lg">
-                            <option value="default_option">M, D, YYYY</option>
-                            <option value="option_select_name">D, M, YYYY</option>
-                            <option value="option_select_name">M, D, YYYY</option>
-                            <option value="option_select_name">YYYY, M, D</option>
-                        </select>
-                    </div>
-                    <div class="form-group"><button data-bs-dismiss="modal" type="submit" class="btn btn-primary">Save</button></div>
                 </div>
             </div>
         </div>

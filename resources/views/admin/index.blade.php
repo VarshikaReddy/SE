@@ -7,7 +7,7 @@
                     <div class="nk-block-between">
                         <div class="nk-block-head-content">
                             <h3 class="nk-block-title page-title">Dashboard</h3>
-                            <div class="nk-block-des text-soft"><p>Welcome to eduApp Dashboard.</p></div>
+                            <div class="nk-block-des text-soft"><p>Welcome to EDUAPP Dashboard.</p></div>
                         </div>
                         @php
                             $courses = \App\Services\DB\CourseService::build()->getEnrolledCourses(auth()->user());
