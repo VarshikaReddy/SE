@@ -19,7 +19,7 @@
                                     </div>
                                     <div class="col-6">
                                         @if($assignment?->student_assignment)
-                                            Submitted File:  <a href="{{ route('admin.student-assignments.edit', $assignment) }}">{{ $assignment?->student_assignment?->assignment_file }}</a>
+                                            Submitted File:  <a href="{{ route('admin.student-assignments.edit', $assignment?->student_assignment) }}">{{ $assignment?->student_assignment?->assignment_file }}</a>
                                         @endif
                                     </div>
                                 </div>
