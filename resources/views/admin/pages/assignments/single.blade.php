@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label class="form-label" for="thumb">Assignment thumbnail</label>
+                                                <label class="form-label" for="thumb">Assignment</label>
                                                 <div class="form-control-wrap">
                                                     <div class="form-file"><input type="file" class="form-file-input" name="thumbnail"  value="{{ isset($assignment) ? $assignment->thumbnail : '' }}"/><label class="form-file-label" for="customFile-create">Choose file</label></div>
                                                 </div>
