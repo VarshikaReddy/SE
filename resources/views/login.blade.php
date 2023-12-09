@@ -49,9 +49,14 @@
                             <form action="{{ route('login') }}" method="post" role="form">
                                 @csrf
                                 <div class="form-group">
-                                    <div class="form-label-group"><label class="form-label" for="default-01">Email</label></div>
-                                    <div class="form-control-wrap"><input type="text" class="form-control form-control-lg" name="email" placeholder="Enter your email address or username" /></div>
-                                </div>
+                            <div class="form-label-group">
+                            <label class="form-label" for="default-01"> <!-- Add the 'for' attribute with the correct ID -->
+                            Email
+                            </label>
+                            </div>
+                            <div class="form-control-wrap">
+                            <input type="text" class="form-control form-control-lg" id="default-01" name="email" placeholder="Enter your email address or username">
+                            </div
                                 <div class="form-group">
                                     <div class="form-label-group">
                                         <label class="form-label" for="password">Passcode</label>
